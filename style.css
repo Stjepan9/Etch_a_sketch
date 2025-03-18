@@ -2,6 +2,8 @@ body{
     font-family: monospace;
     font-weight: bold;
     margin:0;
+    background-color: #e5ece9;
+    text-shadow: 5px 10px 15px hsl(0, 0%, 53%);
 }
 
 #center-container{
@@ -25,9 +27,17 @@ body{
     align-items: center
 }
 
-#content input{
+#colorPicker{
     border: none;
-    border-radius: 20px;
+    border-radius: 50%;
+    width: 100px;
+    height:100px;
+    cursor: pointer;
+    box-shadow: 20 20;
+}
+
+#colorPicker:hover{
+    transform: scale(1.1);
 }
 
 #controls{
@@ -45,17 +55,32 @@ body{
     font-size:1.7rem;
     width:fit-content;
     padding:10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out,transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow:10px 10px 20px hsla(0, 0%, 0%, 0.753);
+    font-weight: bold;
+    background-color:#969a97;
+}
+
+#controls button:hover{
+    transform: scale(1.1);
+
 }
 
 #grid-container{
     height: 600px;
     width: 600px;
-    margin:0 auto;
-    border: 2px solid black;
+    border: 5px solid black
 }
 
+#textSize, #gridValue{
+    font-size: 1.5rem;
+    border-radius: 20px;
+}
 
-
+input[type="range"]{
+    
+}
 
 
 
