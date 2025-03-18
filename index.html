@@ -8,23 +8,25 @@
 </head>
 <body>
     <div id="center-container">
-        <h1>ETCH-A-SKETCH</h1>
+        <div id="header">
+            <h1>ETCH-A-SKETCH</h1>
+        </div>
+        <div id ="content">
             <div id="controls">
                 <input type="color" id="colorPicker">
-                <div id="button-container">
-                    <button>COLOR</button>
-                    <button>RAINBOW</button>
-                    <button>GRADIENT</button>
-                    <button>ERASER</button>
-                    <label for="gridSize">GRID SIZE:</label>
-                    <input type="range" id="gridSize" min= "1" max= "64" value = "16">
-                    <span id="gridValue">16x16</span>
-                </div>
+                <button>COLOR</button>
+                <button>RAINBOW</button>
+                <button>CLEAR</button>
+                <button>ERASER</button>
+                <label for="gridSize">GRID SIZE:</label>
+                <input type="range" id="gridSize" min= "1" max= "64" value = "16">
+                <span id="gridValue">16x16</span>
             </div>
 
-            <div class ="drawing area">
-                <div id="grid">GRID</div>
+            <div id="grid-container">
+                <div id="grid">GRID SQUARES</div>
             </div>
+        </div>
 
 
 
