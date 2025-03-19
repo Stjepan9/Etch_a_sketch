@@ -42,12 +42,34 @@
 //Listen for drawing interactions (mousedown, mouseover, mouseup)
 
 
-const colorButton = document.querySelector("#color");
-const rainbowButton = document.querySelector("#rainbow");
-const clearButton = document.querySelector("#clear");
-const eraserbutton = document.querySelector("#eraser");
+
+const gridContainer = document.querySelector("#grid-container");
+const grid = document.querySelector("#grid");
 
 
-const inputGridSize = document.querySelector("#gridSize");
-const gridElement = document.querySelector("#grid");
+function createGrid(size){
+
+    gridContainer.textContent = "";
+    const gridSize = Math.floor(600 / size);
+
+    for(let i = 0; i < size * size; i++){
+        const cell = document.createElement("div");
+        cell.style.border = "0.5px solid black";
+        cell.style.width = `${gridSize}px`;
+        cell.style.height = `${gridSize}px`
+        cell.style.boxSizing = "border-box"
+        
+        gridContainer.appendChild(cell);
+    }
+
+    gridContainer.style.width = 600;
+}
+
+createGrid(50);
+
+
+
+
+
+
 
