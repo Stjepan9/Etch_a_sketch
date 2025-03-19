@@ -41,43 +41,50 @@
 //Listen for grid size slider change
 //Listen for drawing interactions (mousedown, mouseover, mouseup)
 
-document.addEventListener("DOMContentLoaded");
+
+document.addEventListener("DOMContentLoaded", function(){
+    createGrid(16);
+});
 
 
-const gridContainer = document.querySelector("#grid-container");
-const grid = document.querySelector("#grid");
-
-
-function createGrid(size){
-
+const createGrid = function(size){
+    let gridContainer = document.querySelector("#grid-container");
+    
     gridContainer.innerHTML = "";
-    const gridSize = Math.floor(500 / size) + "px";
 
-    for(let i = 0; i < size * size; i++){
-        const cell = document.createElement("div");
-        cell.style.border = "0.5px solid black";
-        cell.style.width = gridSize;
-        cell.style.height = gridSize;
-        cell.style.boxSizing = "border-box"
-        
-        gridContainer.appendChild(cell);
+    gridContainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    gridContainer.style.width = "600px";
+    gridContainer.style.height = "600px";
+    gridContainer.style.display = "grid";
+    gridContainer.style.opacity ="0.4";
+
+    let numDivs = size * size;
+
+
+    for(let i = 0; i < numDivs; i++){
+        let div = document.createElement("div");
+        div.style.border = `0.5px solid black`;
+        div.style.opacity = `0.5`;
+        div.style.width = "100%";
+        div.style.height = "100%";
+
+        gridContainer.appendChild(div);
     }
-
 }
 
 
-const inputGridElement = document.querySelector("#gridSize")
 const gridValue = document.querySelector("#gridValue");
-
-inputGridElement.addEventListener("input",function(){
+const inputRange = document.querySelector("#gridSize");
+inputRange.addEventListener("input",function(){
     let size = parseInt(this.value, 10);
     gridValue.textContent = `${size} x ${size}`
-    if(this.value > 0 && this.value <= 64){
-        return createGrid(size);
-    }
-});
+    if(size > 0 && size <= 64) return createGrid(size);
+})
 
-createGrid(16);
+
+
+
 
 
 
