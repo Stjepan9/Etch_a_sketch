@@ -49,14 +49,14 @@ const grid = document.querySelector("#grid");
 
 function createGrid(size){
 
-    gridContainer.textContent = "";
-    const gridSize = Math.floor(600 / size);
+    gridContainer.innerHTML = "";
+    const gridSize = Math.floor(600 / size) + "px";
 
     for(let i = 0; i < size * size; i++){
         const cell = document.createElement("div");
         cell.style.border = "0.5px solid black";
-        cell.style.width = `${gridSize}px`;
-        cell.style.height = `${gridSize}px`
+        cell.style.width = gridSize;
+        cell.style.height = gridSize;
         cell.style.boxSizing = "border-box"
         
         gridContainer.appendChild(cell);
@@ -65,7 +65,19 @@ function createGrid(size){
     gridContainer.style.width = 600;
 }
 
-createGrid(50);
+
+const inputGridElement = document.querySelector("#gridSize")
+const gridValue = document.querySelector("#gridValue");
+
+inputGridElement.addEventListener("input",function(){
+    let size = parseInt(this.value, 10);
+    gridValue.textContent = `${size} x ${size}`
+    if(this.value > 0 && this.value <= 64){
+        return createGrid(size);
+    }
+});
+
+createGrid(16);
 
 
 
