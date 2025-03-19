@@ -57,7 +57,7 @@ const createGrid = function(size){
     gridContainer.style.width = "600px";
     gridContainer.style.height = "600px";
     gridContainer.style.display = "grid";
-    gridContainer.style.opacity ="0.4";
+    gridContainer.style.opacity ="0.5";
 
     let numDivs = size * size;
 
@@ -65,7 +65,6 @@ const createGrid = function(size){
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
         div.style.border = `0.5px solid black`;
-        div.style.opacity = `0.5`;
         div.style.width = "100%";
         div.style.height = "100%";
 

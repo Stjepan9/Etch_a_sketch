@@ -72,16 +72,13 @@ input[type = "range"]{
 }
 
 #grid-container{
-    max-width: 600px;
-    max-height: 600px;
+    width: 500px;
+    height: 500px;
     border: 3px solid black;
     overflow: hidden;
     border-radius: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
     gap: 0;
-
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.808);
 }
 
 #gridValue, label{
@@ -94,6 +91,7 @@ input[type = "range"]{
     background-color: white;
     color: black;
 }
+
 
 
 
