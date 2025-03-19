@@ -82,6 +82,15 @@ inputRange.addEventListener("input",function(){
 })
 
 
+const buttons = document.querySelectorAll("#controls button");
+buttons.forEach((button)=>{
+    button.style.width = "150px";
+    button.style.height = "50px";
+});
+
+
+
+
 
 
 
