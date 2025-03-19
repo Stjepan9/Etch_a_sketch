@@ -41,3 +41,13 @@
 //Listen for grid size slider change
 //Listen for drawing interactions (mousedown, mouseover, mouseup)
 
+
+const colorButton = document.querySelector("#color");
+const rainbowButton = document.querySelector("#rainbow");
+const clearButton = document.querySelector("#clear");
+const eraserbutton = document.querySelector("#eraser");
+
+
+const inputGridSize = document.querySelector("#gridSize");
+const gridElement = document.querySelector("#grid");
+
