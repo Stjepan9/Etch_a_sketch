@@ -58,6 +58,7 @@ const createGrid = function(size){
     gridContainer.style.height = "600px";
     gridContainer.style.display = "grid";
     gridContainer.style.opacity ="0.5";
+    gridContainer.style.borderRadius = "30px";
 
     let numDivs = size * size;
 
@@ -81,12 +82,48 @@ inputRange.addEventListener("input",function(){
     if(size > 0 && size <= 64) return createGrid(size);
 })
 
+const colorBtn = document.querySelector("#color");
+const rainbowBtn = document.querySelector("#rainbow");
+const clearBtn = document.querySelector("#clear");
+const eraserBtn = document.querySelector("#eraser");
 
 const buttons = document.querySelectorAll("#controls button");
 buttons.forEach((button)=>{
     button.style.width = "150px";
     button.style.height = "50px";
 });
+let selectedColor = "black";
+buttons.addEventListener("click", (event) => {
+    let target = event.target;
+
+    switch(target.id){
+        case `color`:
+            selectedColor = document.querySelector("#colorPicker").value;
+            break;
+        case `rainbow`:
+            selectedColor = "rainbow";
+            break;
+        case `clear`:
+            document.querySelectorAll("#grid-container div").forEach((div)=>{
+                div.style.backgroundColor = "";
+            })
+            break;
+        case `eraser`:
+            selectedColor ="white";
+            break;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
