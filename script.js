@@ -41,6 +41,7 @@
 //Listen for grid size slider change
 //Listen for drawing interactions (mousedown, mouseover, mouseup)
 
+document.addEventListener("DOMContentLoaded");
 
 
 const gridContainer = document.querySelector("#grid-container");
@@ -50,7 +51,7 @@ const grid = document.querySelector("#grid");
 function createGrid(size){
 
     gridContainer.innerHTML = "";
-    const gridSize = Math.floor(600 / size) + "px";
+    const gridSize = Math.floor(500 / size) + "px";
 
     for(let i = 0; i < size * size; i++){
         const cell = document.createElement("div");
@@ -62,7 +63,6 @@ function createGrid(size){
         gridContainer.appendChild(cell);
     }
 
-    gridContainer.style.width = 600;
 }
 
 
@@ -78,6 +78,8 @@ inputGridElement.addEventListener("input",function(){
 });
 
 createGrid(16);
+
+
 
 
 
