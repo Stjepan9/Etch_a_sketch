@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
 const createGrid = function(size){
     let gridContainer = document.querySelector("#grid-container");
-    
+    //------Clears grid------
     gridContainer.innerHTML = "";
 
+
+    //------DOM manipulation (columns, rows, grid style, width, height, opacity(disappearance) and borderRadius)
     gridContainer.style.gridTemplateColumns = `repeat(${size},1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     gridContainer.style.width = "600px";
@@ -60,9 +62,12 @@ const createGrid = function(size){
     gridContainer.style.opacity ="0.5";
     gridContainer.style.borderRadius = "30px";
 
+    //----- a square is created------
     let numDivs = size * size;
 
-
+    // -------For loop that creates an element(div), loops it number of divs it is set----------
+    // -------Styles it in DOM manipulation-------
+    // ------- Appended child to parent-------
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
         div.style.border = `0.5px solid black`;
@@ -73,7 +78,11 @@ const createGrid = function(size){
     }
 }
 
-
+// ---- EventListener for input and gridValue to change together--------
+// ---- QuerySelector for them both ---------
+// ---- Turn variable size into integer(in decimal system) ------
+// ---- Display gridValue the way it shows -----
+// ---- IF condition it cant go below 0 and above 64 ( grid) -----
 const gridValue = document.querySelector("#gridValue");
 const inputRange = document.querySelector("#gridSize");
 inputRange.addEventListener("input",function(){
@@ -92,27 +101,9 @@ buttons.forEach((button)=>{
     button.style.width = "150px";
     button.style.height = "50px";
 });
-let selectedColor = "black";
-buttons.addEventListener("click", (event) => {
-    let target = event.target;
 
-    switch(target.id){
-        case `color`:
-            selectedColor = document.querySelector("#colorPicker").value;
-            break;
-        case `rainbow`:
-            selectedColor = "rainbow";
-            break;
-        case `clear`:
-            document.querySelectorAll("#grid-container div").forEach((div)=>{
-                div.style.backgroundColor = "";
-            })
-            break;
-        case `eraser`:
-            selectedColor ="white";
-            break;
-    }
-});
+
+
 
 
 
