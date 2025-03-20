@@ -1,26 +1,28 @@
-
+// ---- Loads DOM first----
 document.addEventListener("DOMContentLoaded", function(){
     createGrid(16);
 });
 
 
 // ----- QuerySelector all the buttons -----
-// ----- DOM manipulate them so they have same width and height-----
 const colorBtn = document.querySelector("#color");
 const colorPicker = document.querySelector("#colorPicker");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
 const eraserBtn = document.querySelector("#eraser");
 let gridContainer = document.querySelector("#grid-container");
-
+const gridValue = document.querySelector("#gridValue");
+const inputRange = document.querySelector("#gridSize");
 const buttons = document.querySelectorAll("#controls button");
+
+// ---- Buttons same size-----
 buttons.forEach((button)=>{
     button.style.width = "150px";
     button.style.height = "50px";
 });
 
-
-let selectedMode = "color";
+// ---- Variable declared-----
+let selectedMode;
 
 const createGrid = function(size){
     //------Clears grid------
@@ -34,12 +36,13 @@ const createGrid = function(size){
     gridContainer.style.height = "600px";
     gridContainer.style.display = "grid";
     gridContainer.style.border = " 10px solid #e5ece9"
+    gridContainer.style.boxShadow = "0px 0px 30px hsl(0, 0.00%, 0.00%)";
     gridContainer.style.borderRadius = "30px";
 
     //----- a square is created------
     let numDivs = size * size;
 
-    // -------For loop that creates an element(div), loops it number of divs it is set----------
+    // -------For loop that creates an element(div), loops it number of divs it is declared----------
     // -------Styles it in DOM manipulation-------
     // ------- Appended child to parent-------
     for(let i = 0; i < numDivs; i++){
@@ -50,7 +53,8 @@ const createGrid = function(size){
 
         gridContainer.appendChild(div);
 
-        //---- When mouse enters div it changes color to black(default)-----
+        // It has options (eraser) (colorPicker) (rainbow) (color)
+        // Mouseover(when it moves inside an element)
         div.addEventListener("mouseover", function(){
             if(selectedMode === "eraser"){
                 div.style.backgroundColor = "#e5ece9";
@@ -70,6 +74,7 @@ const createGrid = function(size){
 
 };
 
+//---- Function for button "CLEAR", it loops using forEach every div and then assigns the color it started with-----
 const clearButton = function(){
     document.querySelectorAll("#grid-container div").forEach((div)=>{
         div.style.backgroundColor = "#e5ece9";
@@ -82,8 +87,7 @@ const clearButton = function(){
 // ---- Turn variable size into integer(in decimal system) ------
 // ---- Display gridValue the way it shows -----
 // ---- IF condition it cant go below 0 and above 64 ( grid) -----
-const gridValue = document.querySelector("#gridValue");
-const inputRange = document.querySelector("#gridSize");
+
 inputRange.addEventListener("input",function(){
     let size = parseInt(this.value, 10);
     gridValue.textContent = `${size} x ${size}`
@@ -91,7 +95,8 @@ inputRange.addEventListener("input",function(){
 })
 
 
-//---- Added functions and eventlisteners for buttons------
+//---- Added event listeners for buttons-----
+// ---- There is also input and click listener----
 colorPicker.addEventListener("input", function(){
     selectedMode = "colorPicker";
 });
