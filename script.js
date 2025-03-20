@@ -23,6 +23,7 @@ buttons.forEach((button)=>{
 
 // ---- Variable declared-----
 let selectedMode;
+let isDrawing = false;
 
 const createGrid = function(size){
     //------Clears grid------
@@ -51,28 +52,51 @@ const createGrid = function(size){
         div.style.width = "100%";
         div.style.height = "100%";
 
-        gridContainer.appendChild(div);
+        gridContainer.appendChild(div); 
+    };
+};
 
-        // It has options (eraser) (colorPicker) (rainbow) (color)
+ // It has options (eraser) (colorPicker) (rainbow) (color)
         // Mouseover(when it moves inside an element)
-        div.addEventListener("mouseover", function(){
+        function applyDrawing(element){;
+
             if(selectedMode === "eraser"){
-                div.style.backgroundColor = "#e5ece9";
+                element.style.backgroundColor = "#e5ece9";
             }
             else if(selectedMode === "colorPicker"){
-                div.style.backgroundColor = colorPicker.value;
+                element.style.backgroundColor = colorPicker.value;
             }
             else if(selectedMode === "rainbow"){
                 let randomColor = `#` + Math.floor(Math.random()*16777215).toString(16).padStart(6,"0");
-                div.style.backgroundColor = randomColor;
+                element.style.backgroundColor = randomColor;
             }
             else if(selectedMode === "color"){
-                div.style.backgroundColor = "black";
+                element.style.backgroundColor = "black";
+            };
+        };
+
+        gridContainer.addEventListener("mousedown", function(e){
+            if (e.button === 0) {
+                isDrawing = true;
+                applyDrawing(e.target);
+            }
+        });
+
+        gridContainer.addEventListener("mouseup",function(e){
+            if(e.button === 0){
+                isDrawing = false;
+            }
+        });
+
+        gridContainer.addEventListener("mousemove",function(e){
+            if(isDrawing){
+                applyDrawing(e.target);
             };
         });
-    };
 
-};
+        document.addEventListener("mouseup",function(e){
+            isDrawing = false;
+        })
 
 //---- Function for button "CLEAR", it loops using forEach every div and then assigns the color it started with-----
 const clearButton = function(){
