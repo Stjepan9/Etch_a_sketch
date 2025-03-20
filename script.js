@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function(){
     createGrid(16);
 });
@@ -67,7 +68,12 @@ const createGrid = function(size){
         });
     };
 
+};
 
+const clearButton = function(){
+    document.querySelectorAll("#grid-container div").forEach((div)=>{
+        div.style.backgroundColor = "#e5ece9";
+    });
 };
 
 
@@ -102,6 +108,7 @@ eraserBtn.addEventListener("click", function(){
     selectedMode = "eraser";
 });
 
+clearBtn.addEventListener("click",clearButton);
 
 
 
