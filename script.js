@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function(){
     createGrid(16);
 });
 
+let gridContainer = document.querySelector("#grid-container");
 
 const createGrid = function(size){
-    let gridContainer = document.querySelector("#grid-container");
     //------Clears grid------
     gridContainer.innerHTML = "";
 
@@ -91,6 +91,10 @@ inputRange.addEventListener("input",function(){
     if(size > 0 && size <= 64) return createGrid(size);
 })
 
+
+
+// ----- QuerySelector all the buttons -----
+// ----- DOM manipulate them so they have same width and height-----
 const colorBtn = document.querySelector("#color");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
@@ -101,6 +105,35 @@ buttons.forEach((button)=>{
     button.style.width = "150px";
     button.style.height = "50px";
 });
+
+//---- Added functions and eventlisteners for buttons------
+const color = function(){
+
+};
+
+const rainbow = function(){
+
+};
+
+const eraser = function(){
+
+};
+
+const clear = function(){
+
+};
+
+
+colorBtn.addEventListener("click", color);
+rainbowBtn.addEventListener("click", rainbow);
+eraserBtn.addEventListener("click", eraser);
+clearBtn.addEventListener("click",clear);
+
+gridContainer.addEventListener("mousemove", function(){
+
+});
+
+
 
 
 
