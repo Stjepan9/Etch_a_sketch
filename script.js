@@ -96,6 +96,7 @@ inputRange.addEventListener("input",function(){
 // ----- QuerySelector all the buttons -----
 // ----- DOM manipulate them so they have same width and height-----
 const colorBtn = document.querySelector("#color");
+const colorPicker = document.querySelector("#colorPicker");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
 const eraserBtn = document.querySelector("#eraser");
@@ -107,6 +108,7 @@ buttons.forEach((button)=>{
 });
 
 //---- Added functions and eventlisteners for buttons------
+let selectedColor = "black";
 const color = function(){
 
 };
@@ -125,6 +127,9 @@ const clear = function(){
 
 
 colorBtn.addEventListener("click", color);
+colorPicker.addEventListener("input", function(){
+    selectedColor = this.value;
+});
 rainbowBtn.addEventListener("click", rainbow);
 eraserBtn.addEventListener("click", eraser);
 clearBtn.addEventListener("click",clear);
