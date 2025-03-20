@@ -59,7 +59,7 @@ const createGrid = function(size){
     gridContainer.style.width = "600px";
     gridContainer.style.height = "600px";
     gridContainer.style.display = "grid";
-    gridContainer.style.opacity ="0.5";
+    
     gridContainer.style.borderRadius = "30px";
 
     //----- a square is created------
@@ -75,8 +75,22 @@ const createGrid = function(size){
         div.style.height = "100%";
 
         gridContainer.appendChild(div);
-    }
-}
+
+        //---- When mouse enters div it changes color to black(default)-----
+        div.addEventListener("mouseover", function(){
+            div.style.backgroundColor = "black";
+        });
+
+        eraserBtn.addEventListener("click", function(){
+            div.addEventListener("mouseover", function(){
+                div.style.backgroundColor = "white";
+            })
+        });
+        
+    };
+
+};
+
 
 // ---- EventListener for input and gridValue to change together--------
 // ---- QuerySelector for them both ---------
